@@ -1,0 +1,23 @@
+{
+  "name": "test-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "AlvaroGD",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }, 
+  "eslintConfig": {
+	"env": {
+		"jest": true
+	}
+  },
+  "jest": {
+	"testEnvironment": "node"
+  }
+}
