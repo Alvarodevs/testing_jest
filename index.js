@@ -70,7 +70,7 @@ class Room {
 		let availableRooms = []
 		
 		rooms.forEach((room) => {
-			if (roomIsAvailable(room, startDate, endDate)) {
+			if (roomAvailable(room, startDate, endDate)) {
 				availableRooms = [...availableRooms, room];
 			}
 		});
@@ -78,16 +78,15 @@ class Room {
 	}
 }
 
-function roomIsAvailable(room, startDate, endDate) {
-	let available = true;
+function roomAvailable(room, startDate, endDate) {
 
 	room.bookings.forEach((booking) => {
 		if (new Date(booking.checkIn).getDate() >= new Date(startDate).getDate() && new Date(booking.checkOut).getDate() < new Date(endDate).getDate()) {
-			available = false;
+			return false;
 		}
 	});
 
-	return available;
+	return true;
 }
 
 class Booking {

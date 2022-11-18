@@ -22,7 +22,7 @@ const bookingTemplate2 = {
 	email: 'gromenaur@jarl.com',
 	checkIn: '2021-04-10',
 	checkOut: '2021-04-15',
-	discount: 20,
+	discount: 20, 
 	room: {},
 }
 
@@ -50,8 +50,8 @@ describe("Room", () => {
 	})
 
 	test('total occupancy percentage', () => {
-		let room1 = new Room({ ...roomTemplate,  })
-		let room2 = new Room({ ...roomTemplate, name: 'Better suite',  })
+		let room1 = new Room({ ...roomTemplate, })
+		let room2 = new Room({ ...roomTemplate, name: 'Better suite', })
 		const booking1 = new Booking({ ...bookingTemplate, room: room1 })
 		const booking2 = new Booking({ ...bookingTemplate, checkIn: '2021-04-05', checkOut: '2021-04-10', room: room1 })
 		const booking3 = new Booking({ ...bookingTemplate, checkIn: '2021-04-15', checkOut: '2021-04-30', room: room1 })
@@ -60,7 +60,7 @@ describe("Room", () => {
 		const booking6 = new Booking({ ...bookingTemplate2, checkIn: '2021-05-18', checkOut: '2021-05-20', room: room2 })
 		room1 = { ...room1, bookings: [booking1, booking2, booking3] }
 		room2 = { ...room2, bookings: [booking4, booking5, booking6] }
-		
+
 		const rooms = [room1, room2];
 		expect(Room.totalOccupancyPercentage(rooms, '2021-04-01', '2021-04-30')).toBe(100)
 	})
@@ -100,8 +100,8 @@ describe("Room", () => {
 
 describe('Booking', () => {
 	test('fee discounts included', () => {
-		let booking1 = new Booking({...bookingTemplate})
-		const room1 = new Room({ ...roomTemplate, bookings: booking1})
+		let booking1 = new Booking({ ...bookingTemplate })
+		const room1 = new Room({ ...roomTemplate, bookings: booking1 })
 		booking1 = new Booking({ ...bookingTemplate, room: room1 })
 		expect(booking1.getFee()).toBe(280)
 	})
