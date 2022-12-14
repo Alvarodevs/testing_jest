@@ -1,3 +1,4 @@
+"use strict";
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -7,6 +8,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+exports.__esModule = true;
+exports.Booking = exports.Room = void 0;
 var Room = /** @class */ (function () {
     function Room(room) {
         this.name = room.name;
@@ -81,6 +84,7 @@ var Room = /** @class */ (function () {
     };
     return Room;
 }());
+exports.Room = Room;
 //BOOKING
 var Booking = /** @class */ (function () {
     function Booking(booking) {
@@ -102,6 +106,7 @@ var Booking = /** @class */ (function () {
     };
     return Booking;
 }());
+exports.Booking = Booking;
 function roomAvailable(room, startDate, endDate) {
     room.bookings.forEach(function (booking) {
         if (new Date(booking.checkIn).getDate() >= new Date(startDate).getDate() &&

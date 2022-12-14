@@ -14,7 +14,7 @@ interface IntBooking {
    room: Room
 }
 
-class Room implements IntRoom {
+class Room {
    name: string;
    bookings: Booking[];
    rate: number;
@@ -28,7 +28,7 @@ class Room implements IntRoom {
    }
 
    //create range of date to map
-   rangeDates(start: string, end: string): string[] {
+   rangeDates(start: string, end: string): string[]{
       let range: string[] = [];
       let startDate = new Date(start);
       let endDate = new Date(end);
@@ -41,7 +41,7 @@ class Room implements IntRoom {
    }
 
    //bool returns id or false if occupied in date provided as param
-   isOccupied(date: string) {
+   isOccupied(date: string) :boolean | string {
       const currentDate = new Date(date);
       let name: string | undefined;
       this.bookings.forEach((b) => {
@@ -54,7 +54,7 @@ class Room implements IntRoom {
       return name ? name : false;
    }
 
-   occupancyPercentage(start: string, end: string) {
+   occupancyPercentage(start: string, end: string) :number{
       const range = this.rangeDates(start, end);
       let numOccupied: number = 0;
       range.forEach((date) => {
@@ -113,7 +113,7 @@ class Room implements IntRoom {
 
 
 //BOOKING
-class Booking implements IntBooking {
+class Booking {
    name: string;
    email: string;
    checkIn: string;
@@ -155,4 +155,8 @@ function roomAvailable(room: Room, startDate: string, endDate: string) {
    });
 
    return true;
+}
+
+export {
+	Room, Booking, roomAvailable
 }
